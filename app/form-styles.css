@@ -1,0 +1,29 @@
+/* Style for date and time input placeholders */
+input[type="date"]:not(:focus):not(:valid),
+input[type="time"]:not(:focus):not(:valid) {
+  color: #9CA3AF; /* gray-400 */
+}
+
+input[type="date"]:focus,
+input[type="date"]:valid,
+input[type="time"]:focus,
+input[type="time"]:valid {
+  color: #111827; /* gray-900 */
+}
+
+/* Webkit specific styles for date/time inputs */
+input[type="date"]::-webkit-datetime-edit,
+input[type="time"]::-webkit-datetime-edit {
+  color: #9CA3AF; /* gray-400 when empty */
+}
+
+input[type="date"]:valid::-webkit-datetime-edit,
+input[type="time"]:valid::-webkit-datetime-edit {
+  color: #111827; /* gray-900 when filled */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+}
