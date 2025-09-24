@@ -5,10 +5,21 @@ const SPREADSHEET_ID = '1xajg09DWzWROk1R3nvJSso4ktbwrIJIrkwaAI2MRCZY';
 const RANGE = 'Sheet1!A:E';
 
 export const getGoogleSheetsClient = async () => {
+  // Remove quotes if present and replace escaped newlines with actual newlines
+  let privateKey = process.env.GOOGLE_PRIVATE_KEY || '';
+
+  // Remove surrounding quotes if present
+  if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+    privateKey = privateKey.slice(1, -1);
+  }
+
+  // Replace escaped newlines with actual newlines
+  privateKey = privateKey.replace(/\\n/g, '\n');
+
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      private_key: privateKey,
     },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
