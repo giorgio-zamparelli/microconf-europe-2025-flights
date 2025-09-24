@@ -65,7 +65,7 @@ const FlightForm: React.FC<FlightFormProps> = ({ onSubmit }) => {
           onChange={handleChange}
           required
           placeholder="+1234567890"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition placeholder-gray-700"
         />
       </div>
 
@@ -82,7 +82,7 @@ const FlightForm: React.FC<FlightFormProps> = ({ onSubmit }) => {
           required
           maxLength={3}
           placeholder="JFK"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition uppercase"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition uppercase placeholder-gray-700"
         />
       </div>
 
@@ -97,7 +97,7 @@ const FlightForm: React.FC<FlightFormProps> = ({ onSubmit }) => {
           value={formData.arrivalDate}
           onChange={handleChange}
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition placeholder-gray-700"
         />
       </div>
 
@@ -112,7 +112,7 @@ const FlightForm: React.FC<FlightFormProps> = ({ onSubmit }) => {
           value={formData.arrivalTime}
           onChange={handleChange}
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition placeholder-gray-700"
         />
       </div>
 
