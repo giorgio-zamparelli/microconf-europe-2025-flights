@@ -2,7 +2,7 @@ import { google } from 'googleapis';
 import { Flight } from '@/types/flight';
 
 const SPREADSHEET_ID = '1xajg09DWzWROk1R3nvJSso4ktbwrIJIrkwaAI2MRCZY';
-const RANGE = 'Sheet1!A:E';
+const RANGE = 'Sheet1!A:H';
 
 export const getGoogleSheetsClient = async () => {
   // Remove quotes if present and replace escaped newlines with actual newlines
@@ -46,7 +46,10 @@ export const readFlights = async (): Promise<Flight[]> => {
     departureAirport: row[1] || '',
     arrivalDate: row[2] || '',
     arrivalTime: row[3] || '',
-    timestamp: row[4] || new Date().toISOString(),
+    returnDate: row[4] || '',
+    returnTime: row[5] || '',
+    destinationAirport: row[6] || '',
+    timestamp: row[7] || new Date().toISOString(),
   }));
 
   return flights;
@@ -60,6 +63,9 @@ export const appendFlight = async (flight: Flight): Promise<void> => {
     flight.departureAirport,
     flight.arrivalDate,
     flight.arrivalTime,
+    flight.returnDate || '',
+    flight.returnTime || '',
+    flight.destinationAirport || '',
     new Date().toISOString(),
   ]];
 
@@ -79,15 +85,15 @@ export const initializeSheet = async (): Promise<void> => {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
-      range: 'Sheet1!A1:E1',
+      range: 'Sheet1!A1:H1',
     });
 
     if (!response.data.values || response.data.values.length === 0) {
-      const headers = [['WhatsApp Number', 'Departure Airport', 'Arrival Date', 'Arrival Time', 'Timestamp']];
+      const headers = [['WhatsApp Number', 'Departure Airport', 'Arrival Date', 'Arrival Time', 'Return Date', 'Return Time', 'Destination Airport', 'Timestamp']];
 
       await sheets.spreadsheets.values.update({
         spreadsheetId: SPREADSHEET_ID,
-        range: 'Sheet1!A1:E1',
+        range: 'Sheet1!A1:H1',
         valueInputOption: 'USER_ENTERED',
         requestBody: {
           values: headers,
