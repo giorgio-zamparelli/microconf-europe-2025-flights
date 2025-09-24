@@ -72,7 +72,7 @@ const FlightsTable: React.FC<FlightsTableProps> = ({ flights, currentUserFlight 
               <thead className="bg-green-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Phone Number
+                    WhatsApp Number
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Departure Airport
@@ -88,8 +88,15 @@ const FlightsTable: React.FC<FlightsTableProps> = ({ flights, currentUserFlight 
               <tbody className="bg-white divide-y divide-gray-200">
                 {matchingFlights.map((flight, index) => (
                   <tr key={flight.id || index} className="hover:bg-green-50 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {flight.phoneNumber}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      <a
+                        href={`https://wa.me/${flight.phoneNumber.replace(/[^0-9]/g, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-600 hover:text-green-700 hover:underline font-medium"
+                      >
+                        {flight.phoneNumber.startsWith('+') ? flight.phoneNumber : `+${flight.phoneNumber}`}
+                      </a>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">
                       {flight.departureAirport}
@@ -118,7 +125,7 @@ const FlightsTable: React.FC<FlightsTableProps> = ({ flights, currentUserFlight 
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Phone Number
+                    WhatsApp Number
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Departure Airport
@@ -134,8 +141,15 @@ const FlightsTable: React.FC<FlightsTableProps> = ({ flights, currentUserFlight 
               <tbody className="bg-white divide-y divide-gray-200">
                 {otherFlights.map((flight, index) => (
                   <tr key={flight.id || index} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {flight.phoneNumber}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      <a
+                        href={`https://wa.me/${flight.phoneNumber.replace(/[^0-9]/g, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-600 hover:text-green-700 hover:underline font-medium"
+                      >
+                        {flight.phoneNumber.startsWith('+') ? flight.phoneNumber : `+${flight.phoneNumber}`}
+                      </a>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">
                       {flight.departureAirport}

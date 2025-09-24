@@ -55,7 +55,7 @@ const FlightForm: React.FC<FlightFormProps> = ({ onSubmit }) => {
 
       <div className="mb-4">
         <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
-          Phone Number (with international prefix)
+          WhatsApp Number (with international prefix)
         </label>
         <input
           type="tel"

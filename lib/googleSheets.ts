@@ -83,7 +83,7 @@ export const initializeSheet = async (): Promise<void> => {
     });
 
     if (!response.data.values || response.data.values.length === 0) {
-      const headers = [['Phone Number', 'Departure Airport', 'Arrival Date', 'Arrival Time', 'Timestamp']];
+      const headers = [['WhatsApp Number', 'Departure Airport', 'Arrival Date', 'Arrival Time', 'Timestamp']];
 
       await sheets.spreadsheets.values.update({
         spreadsheetId: SPREADSHEET_ID,
